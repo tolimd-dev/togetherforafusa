@@ -612,11 +612,95 @@
     }
     .idea-btn:hover { background: #1a4d78; color: white; }
 
+    /* ── IDEA FORM ── */
+    .idea-form-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px 36px;
+      margin-bottom: 12px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    }
+    .idea-form-card h3 { font-size: 1.1rem; margin-bottom: 6px; }
+    .idea-form-card .form-intro {
+      font-family: sans-serif;
+      font-size: 15px;
+      color: var(--muted);
+      margin-bottom: 24px;
+      line-height: 1.55;
+    }
+    .form-group { margin-bottom: 16px; }
+    .form-group label {
+      display: block;
+      font-family: sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .form-optional {
+      font-weight: normal;
+      text-transform: none;
+      letter-spacing: 0;
+      font-size: 12px;
+      margin-left: 2px;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-family: sans-serif;
+      font-size: 15px;
+      color: var(--text);
+      background: var(--bg);
+      transition: border-color 0.15s;
+      outline: none;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus { border-color: var(--brand); }
+    .form-group textarea { resize: vertical; min-height: 120px; line-height: 1.55; }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .submit-btn {
+      background: var(--brand);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 28px;
+      font-family: sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s;
+      margin-top: 4px;
+    }
+    .submit-btn:hover { background: #1a4d78; }
+    .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+    .form-success {
+      display: none;
+      background: #f0fdf4;
+      border: 1px solid #86efac;
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      font-family: sans-serif;
+      font-size: 15px;
+      color: #166534;
+      margin-top: 16px;
+    }
+    .form-success.show { display: block; }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 600px) {
-      .story-card, .update-card, .help-card { padding: 20px; }
+      .story-card, .update-card, .help-card, .idea-form-card { padding: 20px; }
       .hero { padding: 48px 16px 40px; }
-      .idea-section { padding: 20px; }
+      .form-row { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -666,7 +750,7 @@
           <h4>Submit your idea</h4>
           <p>Have a connection, a legal angle, or an idea we haven't thought of? Both Anatoli and Afusa will receive your message directly.</p>
           <div class="help-grid-links">
-            <a class="help-link" href="mailto:tolimd@milafamilyhealth.com,afusanakanwagi4@gmail.com?subject=Idea%20for%20Afusa&body=Hi%2C%20I%20have%20an%20idea%20or%20connection%20that%20might%20help%20Afusa%3A%0A%0A">Submit your idea →</a>
+            <a class="help-link" href="#submit-idea">Submit your idea →</a>
           </div>
         </div>
 
@@ -868,6 +952,41 @@
       </div>
     </div>
 
+    <!-- SUBMIT AN IDEA -->
+    <div class="section-title" id="submit-idea">Submit Your Idea</div>
+
+    <div class="idea-form-card">
+      <h3>Think you can help?</h3>
+      <p class="form-intro">Have a contact at SLU, experience with CDC travel exceptions, immigration law expertise, or any other idea? Share it below — your message goes directly to both Anatoli and Afusa.</p>
+      <form id="ideaForm">
+        <input type="hidden" name="access_key" value="b5692f3f-efa8-4e55-a41f-25ea4bbb5d2c">
+        <input type="hidden" name="subject" value="New Idea for Afusa — togetherforafusa.world">
+        <input type="hidden" name="cc" value="afusanakanwagi4@gmail.com">
+        <div class="form-group">
+          <label for="idea">Your Idea <span style="color:var(--accent)">*</span></label>
+          <textarea id="idea" name="idea" placeholder="Share your idea, connection, or suggestion..." required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="name">Your Name <span class="form-optional">(optional)</span></label>
+          <input type="text" id="name" name="name" placeholder="Jane Smith">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">Email <span class="form-optional">(optional)</span></label>
+            <input type="email" id="email" name="email" placeholder="you@example.com">
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone <span class="form-optional">(optional)</span></label>
+            <input type="tel" id="phone" name="phone" placeholder="+1 555 000 0000">
+          </div>
+        </div>
+        <button type="submit" class="submit-btn" id="submitBtn">Send Your Idea</button>
+      </form>
+      <div class="form-success" id="formSuccess">
+        ✓ Your idea has been sent to Anatoli and Afusa. Thank you for helping!
+      </div>
+    </div>
+
     <!-- HOW TO HELP -->
     <div class="section-title">How You Can Help</div>
 
@@ -900,7 +1019,7 @@
           <h4>Submit your idea</h4>
           <p>Have a connection, a legal angle, or an idea we haven't thought of? Both Anatoli and Afusa will receive your message directly.</p>
           <div class="help-grid-links">
-            <a class="help-link" href="mailto:tolimd@milafamilyhealth.com,afusanakanwagi4@gmail.com?subject=Idea%20for%20Afusa&body=Hi%2C%20I%20have%20an%20idea%20or%20connection%20that%20might%20help%20Afusa%3A%0A%0A">Submit your idea →</a>
+            <a class="help-link" href="#submit-idea">Submit your idea →</a>
           </div>
         </div>
 
@@ -924,6 +1043,32 @@
         setTimeout(() => { btn.textContent = original; }, 2000);
       });
     }
+    document.getElementById('ideaForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const btn = document.getElementById('submitBtn');
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+      try {
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: new FormData(this)
+        });
+        const data = await res.json();
+        if (data.success) {
+          this.style.display = 'none';
+          document.getElementById('formSuccess').classList.add('show');
+        } else {
+          btn.disabled = false;
+          btn.textContent = 'Send Your Idea';
+          alert('Something went wrong. Please try again.');
+        }
+      } catch(err) {
+        btn.disabled = false;
+        btn.textContent = 'Send Your Idea';
+        alert('Something went wrong. Please try again.');
+      }
+    });
+
     function copyField(value, btn) {
       navigator.clipboard.writeText(value).then(() => {
         const original = btn.textContent;
