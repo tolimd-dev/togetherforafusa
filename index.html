@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Together for Afusa</title>
+  <meta name="description" content="Afusa is a young woman from Kampala who was on her way to start her Master's in Health Data Science at St. Louis University — and got stopped at the Istanbul airport due to an Ebola travel ban. Here's her story." />
+  <meta property="og:title" content="Together for Afusa" />
+  <meta property="og:description" content="A young woman from Uganda stopped at Istanbul airport en route to her Master's program at SLU. Follow her story." />
+  <meta property="og:type" content="website" />
+
+  <style>
+    :root {
+      --brand: #2a6496;
+      --brand-light: #e8f1f8;
+      --accent: #e07b39;
+      --text: #1a1a2e;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --bg: #fafafa;
+      --card: #ffffff;
+      --update-dot: #2a6496;
+      --radius: 12px;
+      --max-w: 720px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Georgia', serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.75;
+      font-size: 18px;
+    }
+
+    a { color: var(--brand); text-decoration: underline; text-underline-offset: 3px; }
+    a:hover { color: var(--accent); }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, #1a3a5c 0%, #2a6496 60%, #3a85c8 100%);
+      color: white;
+      padding: 64px 24px 56px;
+      text-align: center;
+    }
+    .hero-label {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 999px;
+      font-family: sans-serif;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 14px;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+    .hero p {
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      max-width: 580px;
+      margin: 0 auto 28px;
+      opacity: 0.9;
+      font-family: sans-serif;
+      font-style: normal;
+      line-height: 1.6;
+    }
+    .hero-meta {
+      font-family: sans-serif;
+      font-size: 14px;
+      opacity: 0.7;
+    }
+
+    /* ── LAYOUT ── */
+    .container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* ── STATUS BANNER ── */
+    .status-banner {
+      background: #fff8e1;
+      border-top: 4px solid var(--accent);
+      padding: 16px 24px;
+      text-align: center;
+      font-family: sans-serif;
+      font-size: 15px;
+    }
+    .status-banner strong { color: var(--accent); }
+
+    /* ── SHARE BAR ── */
+    .share-bar {
+      background: var(--brand-light);
+      padding: 16px 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      font-family: sans-serif;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .share-bar span { font-weight: 600; color: var(--brand); }
+    .share-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 6px 16px;
+      font-size: 13px;
+      font-family: sans-serif;
+      cursor: pointer;
+      text-decoration: none;
+      color: var(--text);
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .share-btn:hover { background: var(--brand); color: white; border-color: var(--brand); }
+    .share-btn.copy-btn { cursor: pointer; border: none; }
+    .share-btn.copy-btn:hover { background: var(--brand); color: white; }
+
+    /* ── SECTION HEADINGS ── */
+    .section-title {
+      font-family: sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 48px 0 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── ORIGINAL STORY ── */
+    .story-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 32px 36px;
+      margin-bottom: 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    }
+    .story-card p { margin-bottom: 1em; }
+    .story-card p:last-child { margin-bottom: 0; }
+
+    /* ── TIMELINE ── */
+    .timeline { position: relative; padding-left: 28px; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 7px;
+      top: 8px;
+      bottom: 0;
+      width: 2px;
+      background: var(--border);
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 36px;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -24px;
+      top: 8px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--update-dot);
+      border: 2px solid white;
+      box-shadow: 0 0 0 2px var(--update-dot);
+    }
+    .timeline-item:first-child::before {
+      background: var(--accent);
+      box-shadow: 0 0 0 2px var(--accent);
+    }
+    .update-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 24px 28px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    }
+    .timeline-item:first-child .update-card {
+      border-color: var(--accent);
+      border-width: 2px;
+    }
+    .update-meta {
+      font-family: sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .update-meta .latest-badge {
+      background: var(--accent);
+      color: white;
+      font-size: 10px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      letter-spacing: 0.06em;
+    }
+    .update-card p { margin-bottom: 0.85em; font-size: 17px; }
+    .update-card p:last-child { margin-bottom: 0; }
+    .update-card ul { margin: 0.5em 0 0.85em 1.4em; }
+    .update-card ul li { margin-bottom: 0.4em; font-size: 17px; }
+
+    /* ── HOW TO HELP ── */
+    .help-card {
+      background: linear-gradient(135deg, #1a3a5c, #2a6496);
+      color: white;
+      border-radius: var(--radius);
+      padding: 32px 36px;
+      margin-bottom: 48px;
+    }
+    .help-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+    }
+    .help-card p {
+      font-size: 16px;
+      opacity: 0.9;
+      margin-bottom: 20px;
+      font-family: sans-serif;
+      line-height: 1.6;
+    }
+    .help-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .help-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      padding: 8px 16px;
+      font-family: sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      transition: background 0.15s;
+    }
+    .help-link:hover { background: rgba(255,255,255,0.25); color: white; }
+
+    /* ── SIDEBAR CALLOUT ── */
+    .malaria-callout {
+      background: #f0fdf4;
+      border: 1px solid #86efac;
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      margin: 24px 0;
+      font-family: sans-serif;
+      font-size: 15px;
+    }
+    .malaria-callout strong { color: #166534; display: block; margin-bottom: 6px; }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 32px 24px 48px;
+      font-family: sans-serif;
+      font-size: 13px;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+    footer a { color: var(--muted); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .story-card, .update-card, .help-card { padding: 20px; }
+      .hero { padding: 48px 16px 40px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-label">An Unfolding Story</div>
+    <h1>Together for Afusa</h1>
+    <p>A young woman from Kampala, Uganda — stopped at the Istanbul airport on her way to start her Master's degree — and the people rallying to help her get there.</p>
+    <div class="hero-meta">Story began May 18, 2026 &nbsp;·&nbsp; Last updated May 19, 2026</div>
+  </div>
+
+  <!-- STATUS BANNER -->
+  <div class="status-banner">
+    <strong>Latest:</strong> CDC has issued a 30-day travel ban for travelers from affected regions. Afusa's case may qualify for an exception — SLU and supporters are working on it.
+  </div>
+
+  <!-- SHARE BAR -->
+  <div class="share-bar">
+    <span>Help spread the word →</span>
+    <a class="share-btn" href="https://www.facebook.com/share/p/1NPcpmPjwM/" target="_blank" rel="noopener">
+      Share on Facebook
+    </a>
+    <a class="share-btn" href="https://www.linkedin.com/posts/anatoli-berezovsky-md_activity-7329872826690441216-WdHo" target="_blank" rel="noopener">
+      Share on LinkedIn
+    </a>
+    <button class="share-btn copy-btn" onclick="copyLink()">
+      Copy Link
+    </button>
+  </div>
+
+  <div class="container">
+
+    <!-- ORIGINAL STORY -->
+    <div class="section-title">The Story</div>
+
+    <div class="story-card">
+      <p>I'm currently stuck in the Istanbul airport because of a small but growing Ebola outbreak in Uganda, where I recently was. While here, my group and I met <strong>Afusa</strong> — a lovely woman from Kampala who was on her way to <strong>St. Louis University to start her Master's in Health Data Science.</strong></p>
+
+      <p>She has been planning to do this program for a year now and her course was set to start on May 19th. Her American visa was very difficult to obtain, delaying her ability to get to the states early — and now it appears that she may not make it in time. She is thinking about returning to Uganda and perhaps trying to start the program again in the fall, instead of in the next several days.</p>
+
+      <p><strong>This is her first time going to the states.</strong> She's put in the work to get this Master's, done all of the right things, and her ability to start the program is being compromised.</p>
+
+      <p>Does anyone have contacts at St. Louis University so that we can help support her? Off the cuff — allowing her to start virtually and then come in person later would be an awesome option. We may just need to vouch for her.</p>
+    </div>
+
+    <!-- UPDATES TIMELINE -->
+    <div class="section-title">Updates</div>
+
+    <div class="timeline">
+
+      <!-- UPDATE 3 — Latest -->
+      <div class="timeline-item">
+        <div class="update-card">
+          <div class="update-meta">
+            May 19, 2026 &nbsp;·&nbsp; 4:30 AM CST
+            <span class="latest-badge">Latest</span>
+          </div>
+          <p>The CDC has now issued a formal <strong>30-day travel ban</strong> for travelers in Afusa's situation — see the <a href="https://www.politico.com/" target="_blank" rel="noopener">Politico article on the new CDC travel restrictions</a>.</p>
+          <p>However, Afusa's case seems to fit outside the norm: she was <em>already almost in the states</em> when she was stopped, and her actual exposure to Ebola and likelihood of carrying it are extremely low.</p>
+          <p>Here's where things stand and what's being explored:</p>
+          <ul>
+            <li><strong>SLU is actively working on this.</strong> I've reached out to them with a few additional thoughts.</li>
+            <li>Is there a way for her to receive an <strong>exception</strong> from the department issuing travel restrictions?</li>
+            <li>Could she stay at a <strong>remote SLU site in Turkey</strong> (or somewhere else) for the mandated 30-day waiting period?</li>
+            <li><strong>Turkish Airlines</strong> is telling Afusa she needs to BUY a ticket back to Uganda — even though they removed her from their flight and she already paid for her original ticket to the U.S. (which it sounds like she's not being refunded). If she has to fly back, there is absolutely no way she should have to pay for that ticket.</li>
+          </ul>
+          <p>Stay tuned. Your help and support mean so much!</p>
+        </div>
+      </div>
+
+      <!-- UPDATE 2 -->
+      <div class="timeline-item">
+        <div class="update-card">
+          <div class="update-meta">May 18, 2026 &nbsp;·&nbsp; 2:30 PM CST</div>
+          <p>Thank you <strong>immensely</strong> to everyone who helped out. We're getting somewhere.</p>
+          <p>Afusa has received tons of support via phone calls, WhatsApp messages, and emails — including from DPC doctors with similar backgrounds and people who live or work in the region. The school faculty and staff are also working to find a way in. It appears there are some U.S. airports she may be able to fly into, and they're working on that.</p>
+          <p>I'm no longer in Istanbul, but from what I understand, she has what she needs and is taking everything in stride.</p>
+
+          <div class="malaria-callout">
+            <strong>A bright spot:</strong> In the 2–3 hours we spent together at the airport, we "vibe-coded" a prototype of an idea of hers — a tool to help Uganda track and manage malaria cases. <a href="https://malaria-tracker.onrender.com/" target="_blank" rel="noopener">Check out the malaria tracker prototype →</a> (may take a moment to load)
+          </div>
+        </div>
+      </div>
+
+      <!-- UPDATE 1 -->
+      <div class="timeline-item">
+        <div class="update-card">
+          <div class="update-meta">May 18, 2026 &nbsp;·&nbsp; ~9:30 AM CST</div>
+          <p>The story is out. Share it widely — every connection helps.</p>
+          <ul>
+            <li><a href="https://www.facebook.com/share/p/1NPcpmPjwM/" target="_blank" rel="noopener">Facebook post</a></li>
+            <li><a href="https://www.linkedin.com/posts/anatoli-berezovsky-md_activity-7329872826690441216-WdHo" target="_blank" rel="noopener">LinkedIn post</a></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- HOW TO HELP -->
+    <div class="help-card">
+      <h3>How You Can Help</h3>
+      <p>The most powerful thing right now is spreading awareness and connecting us with the right people — especially anyone with ties to St. Louis University, immigration law, or travel policy at the CDC or State Department.</p>
+      <div class="help-links">
+        <a class="help-link" href="https://www.facebook.com/share/p/1NPcpmPjwM/" target="_blank" rel="noopener">Share on Facebook</a>
+        <a class="help-link" href="https://www.linkedin.com/posts/anatoli-berezovsky-md_activity-7329872826690441216-WdHo" target="_blank" rel="noopener">Share on LinkedIn</a>
+        <a class="help-link" href="https://malaria-tracker.onrender.com/" target="_blank" rel="noopener">See Afusa's Malaria Tracker</a>
+      </div>
+    </div>
+
+  </div><!-- /container -->
+
+  <footer>
+    <p>This page is maintained by Anatoli Berezovsky &nbsp;·&nbsp; Story began May 18, 2026</p>
+    <p style="margin-top:8px;">Want to follow stories like this? This is just the beginning.</p>
+  </footer>
+
+  <script>
+    function copyLink() {
+      const url = window.location.href;
+      navigator.clipboard.writeText(url).then(() => {
+        const btn = document.querySelector('.copy-btn');
+        const original = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(() => { btn.textContent = original; }, 2000);
+      });
+    }
+  </script>
+
+</body>
+</html>
