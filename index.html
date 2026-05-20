@@ -97,65 +97,66 @@
 
     /* ── HELP BAR (top) ── */
     .help-bar {
-      background: var(--brand-light);
-      border-bottom: 1px solid #d1e4f3;
-      padding: 12px 24px;
+      background: linear-gradient(135deg, #1a3a5c, #2a6496);
+      padding: 20px 24px;
     }
     .help-bar-inner {
       max-width: var(--max-w);
       margin: 0 auto;
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       flex-wrap: wrap;
-      gap: 4px;
+      gap: 0;
     }
     .help-bar-item {
       display: flex;
-      align-items: center;
-      gap: 7px;
-      flex-wrap: wrap;
-      padding: 4px 0;
+      flex-direction: column;
+      gap: 4px;
+      flex: 1;
+      min-width: 160px;
+      padding: 0 20px 0 0;
     }
     .help-bar-num {
       font-family: sans-serif;
-      font-size: 12px;
+      font-size: 26px;
       font-weight: 800;
-      color: var(--brand);
-      min-width: 18px;
+      color: white;
+      opacity: 0.35;
+      line-height: 1;
     }
     .help-bar-label {
       font-family: sans-serif;
       font-size: 13px;
       font-weight: 700;
-      color: var(--text);
+      color: white;
       white-space: nowrap;
     }
     .help-bar-divider {
       width: 1px;
-      height: 26px;
-      background: #c0d9ec;
-      margin: 0 14px;
+      background: rgba(255,255,255,0.2);
+      margin: 0 20px 0 0;
+      align-self: stretch;
       flex-shrink: 0;
     }
-    .help-bar-actions { display: flex; gap: 6px; flex-wrap: wrap; }
+    .help-bar-actions { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 4px; }
     .share-btn {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: white;
-      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
       border-radius: 999px;
       padding: 5px 14px;
-      font-size: 13px;
+      font-size: 12px;
       font-family: sans-serif;
       cursor: pointer;
       text-decoration: none;
-      color: var(--text);
-      transition: background 0.15s, border-color 0.15s;
+      color: white;
+      transition: background 0.15s;
     }
-    .share-btn:hover { background: var(--brand); color: white; border-color: var(--brand); }
+    .share-btn:hover { background: rgba(255,255,255,0.28); color: white; }
     .share-btn.copy-btn { cursor: pointer; }
-    .share-btn.copy-btn:hover { background: var(--brand); color: white; }
+    .share-btn.copy-btn:hover { background: rgba(255,255,255,0.28); color: white; }
 
     /* ── SECTION HEADINGS ── */
     .section-title {
@@ -398,6 +399,102 @@
       margin: 0;
     }
 
+    /* ── DONATE SECTION ── */
+    .donate-primary {
+      background: var(--card);
+      border: 2px solid var(--brand);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      margin-bottom: 12px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    }
+    .donate-primary h3 { font-size: 1.1rem; margin-bottom: 6px; }
+    .donate-primary .donate-intro {
+      font-family: sans-serif;
+      font-size: 15px;
+      color: var(--muted);
+      margin-bottom: 20px;
+      line-height: 1.55;
+    }
+    .phone-block {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--brand-light);
+      border: 1px solid #c0d9ec;
+      border-radius: 10px;
+      padding: 14px 18px;
+      margin-bottom: 12px;
+      gap: 12px;
+    }
+    .phone-block-left { display: flex; flex-direction: column; gap: 2px; }
+    .phone-label {
+      font-family: sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .phone-number {
+      font-family: monospace;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--brand);
+      letter-spacing: 0.04em;
+    }
+    .network-badges {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+    .network-badge {
+      font-family: sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: #f3f4f6;
+      color: var(--muted);
+      border: 1px solid var(--border);
+    }
+    .remitly-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--brand);
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      padding: 11px 24px;
+      font-family: sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      transition: background 0.15s;
+    }
+    .remitly-btn:hover { background: #1a4d78; color: white; }
+    .donate-alt {
+      margin-top: 12px;
+    }
+    .donate-alt-toggle {
+      font-family: sans-serif;
+      font-size: 13px;
+      color: var(--muted);
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 8px 0;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .donate-alt-toggle:hover { color: var(--brand); }
+    .donate-alt-content {
+      display: none;
+      margin-top: 8px;
+    }
+    .donate-alt-content.open { display: block; }
+
     /* ── BANK DETAILS ── */
     .bank-card {
       background: var(--card);
@@ -554,7 +651,7 @@
         <span class="help-bar-num">3/</span>
         <span class="help-bar-label">Submit an idea</span>
         <div class="help-bar-actions">
-          <a class="share-btn" href="mailto:tolimd@milafamilyhealth.com,AFUSA_EMAIL?subject=Idea%20for%20Afusa&body=Hi%2C%20I%20have%20an%20idea%20or%20connection%20that%20might%20help%20Afusa%3A%0A%0A">Submit →</a>
+          <a class="share-btn" href="mailto:tolimd@milafamilyhealth.com,afusanakanwagi4@gmail.com?subject=Idea%20for%20Afusa&body=Hi%2C%20I%20have%20an%20idea%20or%20connection%20that%20might%20help%20Afusa%3A%0A%0A">Submit →</a>
         </div>
       </div>
     </div>
@@ -693,41 +790,55 @@
     <!-- SEND MONEY -->
     <div class="section-title" id="donate">Send Money Directly to Afusa</div>
 
-    <div class="bank-card">
-      <h3>Send Money Directly to Afusa</h3>
-      <p class="bank-intro">If you'd like to support Afusa financially — for travel, living expenses, or anything she may need — you can send directly to her account via international wire transfer. Please note that your bank will deduct a transfer fee before the funds arrive; the amount she receives will be whatever you send minus that fee.</p>
-      <div class="bank-fields">
-        <div class="bank-field">
-          <div class="bank-field-left">
-            <span class="bank-field-label">Account Name</span>
-            <span class="bank-field-value plain">Idyedo Patricia Lorna</span>
-          </div>
+    <div class="donate-primary">
+      <h3>Send via Mobile Money — No App Needed</h3>
+      <p class="donate-intro">Go to <a href="https://remitly.com" target="_blank" rel="noopener">remitly.com</a>, select Uganda, choose Mobile Money, and enter Afusa's number. Money arrives in minutes. No app download required — works entirely in your browser.</p>
+      <div class="phone-block">
+        <div class="phone-block-left">
+          <span class="phone-label">Afusa's Mobile Money Number</span>
+          <span class="phone-number">+256 701 157670</span>
         </div>
-        <div class="bank-field">
-          <div class="bank-field-left">
-            <span class="bank-field-label">Account Number</span>
-            <span class="bank-field-value">0100822053700</span>
+        <button class="copy-field-btn" onclick="copyField('+256701157670', this)">Copy</button>
+      </div>
+      <div class="network-badges">
+        <span class="network-badge">✓ Airtel Money</span>
+        <span class="network-badge">✓ MTN Mobile Money</span>
+        <span class="network-badge">Typical fee: $2–4</span>
+      </div>
+      <a class="remitly-btn" href="https://remitly.com" target="_blank" rel="noopener">Send via Remitly →</a>
+
+      <div class="donate-alt">
+        <button class="donate-alt-toggle" onclick="this.nextElementSibling.classList.toggle('open');this.textContent=this.nextElementSibling.classList.contains('open')?'▲ Hide wire transfer details':'▼ Prefer a wire transfer for larger amounts?'">▼ Prefer a wire transfer for larger amounts?</button>
+        <div class="donate-alt-content">
+          <div class="bank-fields" style="margin-top:12px;">
+            <div class="bank-field">
+              <div class="bank-field-left">
+                <span class="bank-field-label">Account Name</span>
+                <span class="bank-field-value plain">Idyedo Patricia Lorna</span>
+              </div>
+            </div>
+            <div class="bank-field">
+              <div class="bank-field-left">
+                <span class="bank-field-label">Account Number</span>
+                <span class="bank-field-value">0100822053700</span>
+              </div>
+              <button class="copy-field-btn" onclick="copyField('0100822053700', this)">Copy</button>
+            </div>
+            <div class="bank-field">
+              <div class="bank-field-left">
+                <span class="bank-field-label">Bank</span>
+                <span class="bank-field-value plain">Standard Chartered Bank, Speke Road, Kampala, Uganda</span>
+              </div>
+            </div>
+            <div class="bank-field">
+              <div class="bank-field-left">
+                <span class="bank-field-label">SWIFT / BIC Code</span>
+                <span class="bank-field-value">SCBLUGKAXXX</span>
+              </div>
+              <button class="copy-field-btn" onclick="copyField('SCBLUGKAXXX', this)">Copy</button>
+            </div>
           </div>
-          <button class="copy-field-btn" onclick="copyField('0100822053700', this)">Copy</button>
-        </div>
-        <div class="bank-field">
-          <div class="bank-field-left">
-            <span class="bank-field-label">Bank</span>
-            <span class="bank-field-value plain">Standard Chartered Bank</span>
-          </div>
-        </div>
-        <div class="bank-field">
-          <div class="bank-field-left">
-            <span class="bank-field-label">Branch</span>
-            <span class="bank-field-value plain">Speke Road, Kampala, Uganda</span>
-          </div>
-        </div>
-        <div class="bank-field">
-          <div class="bank-field-left">
-            <span class="bank-field-label">SWIFT / BIC Code</span>
-            <span class="bank-field-value">SCBLUGKAXXX</span>
-          </div>
-          <button class="copy-field-btn" onclick="copyField('SCBLUGKAXXX', this)">Copy</button>
+          <p style="font-family:sans-serif;font-size:13px;color:var(--muted);margin-top:10px;">Note: your bank will deduct a transfer fee (typically $25–45) before funds arrive.</p>
         </div>
       </div>
     </div>
@@ -764,7 +875,7 @@
           <h4>Submit your idea</h4>
           <p>Have a connection, a legal angle, or an idea we haven't thought of? Both Anatoli and Afusa will receive your message directly.</p>
           <div class="help-grid-links">
-            <a class="help-link" href="mailto:tolimd@milafamilyhealth.com,AFUSA_EMAIL?subject=Idea%20for%20Afusa&body=Hi%2C%20I%20have%20an%20idea%20or%20connection%20that%20might%20help%20Afusa%3A%0A%0A">Submit your idea →</a>
+            <a class="help-link" href="mailto:tolimd@milafamilyhealth.com,afusanakanwagi4@gmail.com?subject=Idea%20for%20Afusa&body=Hi%2C%20I%20have%20an%20idea%20or%20connection%20that%20might%20help%20Afusa%3A%0A%0A">Submit your idea →</a>
           </div>
         </div>
 
