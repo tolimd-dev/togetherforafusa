@@ -339,6 +339,79 @@
       margin: 0;
     }
 
+    /* ── BANK DETAILS ── */
+    .bank-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      margin-bottom: 12px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    }
+    .bank-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 6px;
+    }
+    .bank-card .bank-intro {
+      font-family: sans-serif;
+      font-size: 15px;
+      color: var(--muted);
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+    .bank-fields {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .bank-field {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 14px;
+      gap: 12px;
+    }
+    .bank-field-left {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .bank-field-label {
+      font-family: sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .bank-field-value {
+      font-family: monospace;
+      font-size: 16px;
+      color: var(--text);
+      font-weight: 600;
+    }
+    .bank-field-value.plain {
+      font-family: sans-serif;
+      font-size: 15px;
+    }
+    .copy-field-btn {
+      flex-shrink: 0;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 5px 12px;
+      font-family: sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--brand);
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+    }
+    .copy-field-btn:hover { background: var(--brand); color: white; border-color: var(--brand); }
+
     /* ── SUBMIT IDEA ── */
     .idea-section {
       background: var(--card);
@@ -541,6 +614,48 @@
       </div>
     </div>
 
+    <!-- SEND MONEY -->
+    <div class="section-title">Support Afusa Directly</div>
+
+    <div class="bank-card">
+      <h3>Send a Wire Transfer</h3>
+      <p class="bank-intro">If you'd like to support Afusa financially — for travel, living expenses, or anything she may need — you can send directly to her account via international wire transfer.</p>
+      <div class="bank-fields">
+        <div class="bank-field">
+          <div class="bank-field-left">
+            <span class="bank-field-label">Account Name</span>
+            <span class="bank-field-value plain">Idyedo Patricia Lorna</span>
+          </div>
+        </div>
+        <div class="bank-field">
+          <div class="bank-field-left">
+            <span class="bank-field-label">Account Number</span>
+            <span class="bank-field-value">0100822053700</span>
+          </div>
+          <button class="copy-field-btn" onclick="copyField('0100822053700', this)">Copy</button>
+        </div>
+        <div class="bank-field">
+          <div class="bank-field-left">
+            <span class="bank-field-label">Bank</span>
+            <span class="bank-field-value plain">Standard Chartered Bank</span>
+          </div>
+        </div>
+        <div class="bank-field">
+          <div class="bank-field-left">
+            <span class="bank-field-label">Branch</span>
+            <span class="bank-field-value plain">Speke Road, Kampala, Uganda</span>
+          </div>
+        </div>
+        <div class="bank-field">
+          <div class="bank-field-left">
+            <span class="bank-field-label">SWIFT / BIC Code</span>
+            <span class="bank-field-value">SCBLUGKAXXX</span>
+          </div>
+          <button class="copy-field-btn" onclick="copyField('SCBLUGKAXXX', this)">Copy</button>
+        </div>
+      </div>
+    </div>
+
     <!-- SUBMIT AN IDEA -->
     <div class="section-title">Have an Idea?</div>
 
@@ -573,6 +688,13 @@
       const url = window.location.href;
       navigator.clipboard.writeText(url).then(() => {
         const btn = document.querySelector('.copy-btn');
+        const original = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(() => { btn.textContent = original; }, 2000);
+      });
+    }
+    function copyField(value, btn) {
+      navigator.clipboard.writeText(value).then(() => {
         const original = btn.textContent;
         btn.textContent = 'Copied!';
         setTimeout(() => { btn.textContent = original; }, 2000);
