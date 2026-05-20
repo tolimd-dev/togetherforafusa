@@ -291,10 +291,94 @@
     }
     footer a { color: var(--muted); }
 
+    /* ── SOLUTIONS ── */
+    .solutions-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .solution-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 22px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    }
+    .solution-status {
+      flex-shrink: 0;
+      margin-top: 3px;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #fef3c7;
+      border: 2px solid #f59e0b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+    }
+    .solution-status.active {
+      background: #dcfce7;
+      border-color: #22c55e;
+    }
+    .solution-body strong {
+      display: block;
+      font-size: 16px;
+      margin-bottom: 3px;
+      font-family: sans-serif;
+    }
+    .solution-body p {
+      font-size: 15px;
+      color: var(--muted);
+      font-family: sans-serif;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    /* ── SUBMIT IDEA ── */
+    .idea-section {
+      background: var(--card);
+      border: 2px dashed var(--border);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      text-align: center;
+      margin-bottom: 12px;
+    }
+    .idea-section h3 {
+      font-size: 1.15rem;
+      margin-bottom: 8px;
+    }
+    .idea-section p {
+      font-family: sans-serif;
+      font-size: 15px;
+      color: var(--muted);
+      max-width: 480px;
+      margin: 0 auto 20px;
+      line-height: 1.6;
+    }
+    .idea-btn {
+      display: inline-block;
+      background: var(--brand);
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      padding: 12px 28px;
+      font-family: sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      transition: background 0.15s;
+    }
+    .idea-btn:hover { background: #1a4d78; color: white; }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 600px) {
       .story-card, .update-card, .help-card { padding: 20px; }
       .hero { padding: 48px 16px 40px; }
+      .idea-section { padding: 20px; }
     }
   </style>
 </head>
@@ -333,13 +417,13 @@
     <div class="section-title">The Story</div>
 
     <div class="story-card">
-      <p>I'm currently stuck in the Istanbul airport because of a small but growing Ebola outbreak in Uganda, where I recently was. While here, my group and I met <strong>Afusa</strong> — a lovely woman from Kampala who was on her way to <strong>St. Louis University to start her Master's in Health Data Science.</strong></p>
+      <p>On Monday, May 18th, I was stuck in the Istanbul airport due to a small but growing Ebola outbreak in Uganda, where I had recently been. While there, my group and I met <strong>Afusa</strong> — a lovely woman from Kampala who was on her way to <strong>St. Louis University to start her Master's in Health Data Science.</strong></p>
 
-      <p>She has been planning to do this program for a year now and her course was set to start on May 19th. Her American visa was very difficult to obtain, delaying her ability to get to the states early — and now it appears that she may not make it in time. She is thinking about returning to Uganda and perhaps trying to start the program again in the fall, instead of in the next several days.</p>
+      <p>She had been planning this program for a year. Her course was set to start on May 19th. Her American visa was very difficult to obtain, delaying her ability to arrive early — and when we met, she was discussing having to return to Uganda and try again in the fall or even the following year.</p>
 
-      <p><strong>This is her first time going to the states.</strong> She's put in the work to get this Master's, done all of the right things, and her ability to start the program is being compromised.</p>
+      <p><strong>This is her first time going to the states.</strong> She's put in the work, done all of the right things, and her ability to start the program is being compromised through no fault of her own.</p>
 
-      <p>Does anyone have contacts at St. Louis University so that we can help support her? Off the cuff — allowing her to start virtually and then come in person later would be an awesome option. We may just need to vouch for her.</p>
+      <p>People are already working on solutions — but awareness and the right connections can make all the difference. If you have an idea or a contact that could help, please reach out.</p>
     </div>
 
     <!-- UPDATES TIMELINE -->
@@ -393,6 +477,49 @@
         </div>
       </div>
 
+    </div>
+
+    <!-- SOLUTIONS BEING EXPLORED -->
+    <div class="section-title">Solutions Being Explored</div>
+
+    <div class="solutions-grid">
+      <div class="solution-card">
+        <div class="solution-status active">✓</div>
+        <div class="solution-body">
+          <strong>Virtual start at SLU</strong>
+          <p>Allow Afusa to begin her Master's program remotely while the travel situation is resolved, then join in person once she's cleared to enter the U.S.</p>
+        </div>
+      </div>
+      <div class="solution-card">
+        <div class="solution-status">…</div>
+        <div class="solution-body">
+          <strong>CDC exception request</strong>
+          <p>Afusa's exposure risk is extremely low — she was already nearly in the U.S. when stopped. Exploring whether a formal exception to the 30-day ban can be granted.</p>
+        </div>
+      </div>
+      <div class="solution-card">
+        <div class="solution-status">…</div>
+        <div class="solution-body">
+          <strong>30-day waiting period at a remote SLU site</strong>
+          <p>Could Afusa stay at a remote SLU location in Turkey or another country for the mandated 30-day period, then enter the U.S. once cleared?</p>
+        </div>
+      </div>
+      <div class="solution-card">
+        <div class="solution-status">…</div>
+        <div class="solution-body">
+          <strong>Turkish Airlines ticket refund or rebooking</strong>
+          <p>Turkish Airlines removed Afusa from her paid flight. She should not have to purchase a new ticket to return to Uganda — pursuing a refund or rebooking at no cost to her.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SUBMIT AN IDEA -->
+    <div class="section-title">Have an Idea?</div>
+
+    <div class="idea-section">
+      <h3>Think you can help?</h3>
+      <p>If you have a contact at SLU, experience with CDC travel exceptions, immigration law expertise, or any other idea — we want to hear it.</p>
+      <a class="idea-btn" href="mailto:tolimd@milafamilyhealth.com?subject=Idea%20for%20Afusa&body=Hi%2C%20I%20have%20an%20idea%20or%20connection%20that%20might%20help%20Afusa%3A%0A%0A">Submit Your Idea</a>
     </div>
 
     <!-- HOW TO HELP -->
