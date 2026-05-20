@@ -95,20 +95,49 @@
     }
     .status-banner strong { color: var(--accent); }
 
-    /* ── SHARE BAR ── */
-    .share-bar {
+    /* ── HELP BAR (top) ── */
+    .help-bar {
       background: var(--brand-light);
-      padding: 16px 24px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
-      font-family: sans-serif;
-      font-size: 14px;
-      color: var(--muted);
+      border-bottom: 1px solid #d1e4f3;
+      padding: 12px 24px;
     }
-    .share-bar span { font-weight: 600; color: var(--brand); }
+    .help-bar-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+    .help-bar-item {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      flex-wrap: wrap;
+      padding: 4px 0;
+    }
+    .help-bar-num {
+      font-family: sans-serif;
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--brand);
+      min-width: 18px;
+    }
+    .help-bar-label {
+      font-family: sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+      white-space: nowrap;
+    }
+    .help-bar-divider {
+      width: 1px;
+      height: 26px;
+      background: #c0d9ec;
+      margin: 0 14px;
+      flex-shrink: 0;
+    }
+    .help-bar-actions { display: flex; gap: 6px; flex-wrap: wrap; }
     .share-btn {
       display: inline-flex;
       align-items: center;
@@ -116,7 +145,7 @@
       background: white;
       border: 1px solid var(--border);
       border-radius: 999px;
-      padding: 6px 16px;
+      padding: 5px 14px;
       font-size: 13px;
       font-family: sans-serif;
       cursor: pointer;
@@ -125,7 +154,7 @@
       transition: background 0.15s, border-color 0.15s;
     }
     .share-btn:hover { background: var(--brand); color: white; border-color: var(--brand); }
-    .share-btn.copy-btn { cursor: pointer; border: none; }
+    .share-btn.copy-btn { cursor: pointer; }
     .share-btn.copy-btn:hover { background: var(--brand); color: white; }
 
     /* ── SECTION HEADINGS ── */
@@ -227,7 +256,7 @@
     .update-card ul { margin: 0.5em 0 0.85em 1.4em; }
     .update-card ul li { margin-bottom: 0.4em; font-size: 17px; }
 
-    /* ── HOW TO HELP ── */
+    /* ── HOW TO HELP (bottom) ── */
     .help-card {
       background: linear-gradient(135deg, #1a3a5c, #2a6496);
       color: white;
@@ -235,38 +264,68 @@
       padding: 32px 36px;
       margin-bottom: 48px;
     }
-    .help-card h3 {
-      font-size: 1.3rem;
-      margin-bottom: 12px;
-    }
-    .help-card p {
-      font-size: 16px;
-      opacity: 0.9;
-      margin-bottom: 20px;
+    .help-card-label {
       font-family: sans-serif;
-      line-height: 1.6;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.6;
+      margin-bottom: 20px;
     }
-    .help-links {
+    .help-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .help-grid-item { display: flex; flex-direction: column; gap: 8px; }
+    .help-grid-num {
+      font-family: sans-serif;
+      font-size: 28px;
+      font-weight: 800;
+      opacity: 0.35;
+      line-height: 1;
+    }
+    .help-grid-item h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin: 0;
+    }
+    .help-grid-item p {
+      font-family: sans-serif;
+      font-size: 13px;
+      opacity: 0.8;
+      line-height: 1.55;
+      margin: 0;
+      flex: 1;
+    }
+    .help-grid-links {
       display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
+      flex-direction: column;
+      gap: 6px;
+      margin-top: 6px;
     }
     .help-link {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
       background: rgba(255,255,255,0.15);
-      border: 1px solid rgba(255,255,255,0.3);
+      border: 1px solid rgba(255,255,255,0.25);
       color: white;
       text-decoration: none;
-      border-radius: 8px;
-      padding: 8px 16px;
+      border-radius: 7px;
+      padding: 7px 14px;
       font-family: sans-serif;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 600;
       transition: background 0.15s;
+      width: fit-content;
     }
     .help-link:hover { background: rgba(255,255,255,0.25); color: white; }
+    @media (max-width: 600px) {
+      .help-grid { grid-template-columns: 1fr; gap: 24px; }
+      .help-bar-divider { display: none; }
+      .help-bar-item { width: 100%; }
+    }
 
     /* ── SIDEBAR CALLOUT ── */
     .malaria-callout {
@@ -470,18 +529,35 @@
     <strong>Latest:</strong> CDC has issued a 30-day travel ban for travelers from affected regions. Afusa's case may qualify for an exception — SLU and supporters are working on it.
   </div>
 
-  <!-- SHARE BAR -->
-  <div class="share-bar">
-    <span>Help spread the word →</span>
-    <a class="share-btn" href="https://www.facebook.com/share/p/1NPcpmPjwM/" target="_blank" rel="noopener">
-      Share on Facebook
-    </a>
-    <a class="share-btn" href="https://www.linkedin.com/posts/anatoli-berezovsky-md_activity-7329872826690441216-WdHo" target="_blank" rel="noopener">
-      Share on LinkedIn
-    </a>
-    <button class="share-btn copy-btn" onclick="copyLink()">
-      Copy Link
-    </button>
+  <!-- HELP BAR -->
+  <div class="help-bar">
+    <div class="help-bar-inner">
+      <div class="help-bar-item">
+        <span class="help-bar-num">1/</span>
+        <span class="help-bar-label">Share</span>
+        <div class="help-bar-actions">
+          <a class="share-btn" href="https://www.facebook.com/share/p/1NPcpmPjwM/" target="_blank" rel="noopener">Facebook</a>
+          <a class="share-btn" href="https://www.linkedin.com/posts/anatoli-berezovsky-md_activity-7329872826690441216-WdHo" target="_blank" rel="noopener">LinkedIn</a>
+          <button class="share-btn copy-btn" onclick="copyLink()">Copy Link</button>
+        </div>
+      </div>
+      <div class="help-bar-divider"></div>
+      <div class="help-bar-item">
+        <span class="help-bar-num">2/</span>
+        <span class="help-bar-label">Donate</span>
+        <div class="help-bar-actions">
+          <a class="share-btn" href="#donate">Send money directly →</a>
+        </div>
+      </div>
+      <div class="help-bar-divider"></div>
+      <div class="help-bar-item">
+        <span class="help-bar-num">3/</span>
+        <span class="help-bar-label">Submit an idea</span>
+        <div class="help-bar-actions">
+          <a class="share-btn" href="mailto:tolimd@milafamilyhealth.com,AFUSA_EMAIL?subject=Idea%20for%20Afusa&body=Hi%2C%20I%20have%20an%20idea%20or%20connection%20that%20might%20help%20Afusa%3A%0A%0A">Submit →</a>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="container">
@@ -615,7 +691,7 @@
     </div>
 
     <!-- SEND MONEY -->
-    <div class="section-title">Send Money Directly to Afusa</div>
+    <div class="section-title" id="donate">Send Money Directly to Afusa</div>
 
     <div class="bank-card">
       <h3>Send Money Directly to Afusa</h3>
@@ -656,23 +732,42 @@
       </div>
     </div>
 
-    <!-- SUBMIT AN IDEA -->
-    <div class="section-title">Have an Idea?</div>
-
-    <div class="idea-section">
-      <h3>Think you can help?</h3>
-      <p>If you have a contact at SLU, experience with CDC travel exceptions, immigration law expertise, or any other idea — we want to hear it.</p>
-      <a class="idea-btn" href="mailto:tolimd@milafamilyhealth.com?subject=Idea%20for%20Afusa&body=Hi%2C%20I%20have%20an%20idea%20or%20connection%20that%20might%20help%20Afusa%3A%0A%0A">Submit Your Idea</a>
-    </div>
-
     <!-- HOW TO HELP -->
+    <div class="section-title">How You Can Help</div>
+
     <div class="help-card">
-      <h3>How You Can Help</h3>
-      <p>The most powerful thing right now is spreading awareness and connecting us with the right people — especially anyone with ties to St. Louis University, immigration law, or travel policy at the CDC or State Department.</p>
-      <div class="help-links">
-        <a class="help-link" href="https://www.facebook.com/share/p/1NPcpmPjwM/" target="_blank" rel="noopener">Share on Facebook</a>
-        <a class="help-link" href="https://www.linkedin.com/posts/anatoli-berezovsky-md_activity-7329872826690441216-WdHo" target="_blank" rel="noopener">Share on LinkedIn</a>
-        <a class="help-link" href="https://malaria-tracker.onrender.com/" target="_blank" rel="noopener">See Afusa's Malaria Tracker</a>
+      <div class="help-card-label">How You Can Help</div>
+      <div class="help-grid">
+
+        <div class="help-grid-item">
+          <div class="help-grid-num">1/</div>
+          <h4>Share her story</h4>
+          <p>The most powerful thing is getting this in front of the right people — especially anyone with ties to SLU, immigration law, or CDC travel policy.</p>
+          <div class="help-grid-links">
+            <a class="help-link" href="https://www.facebook.com/share/p/1NPcpmPjwM/" target="_blank" rel="noopener">Share on Facebook</a>
+            <a class="help-link" href="https://www.linkedin.com/posts/anatoli-berezovsky-md_activity-7329872826690441216-WdHo" target="_blank" rel="noopener">Share on LinkedIn</a>
+            <button class="help-link share-btn copy-btn" onclick="copyLink()" style="background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);color:white;">Copy Link</button>
+          </div>
+        </div>
+
+        <div class="help-grid-item">
+          <div class="help-grid-num">2/</div>
+          <h4>Donate directly to Afusa</h4>
+          <p>Send money straight to Afusa via international wire transfer. Every bit helps with travel, living costs, and anything she needs right now.</p>
+          <div class="help-grid-links">
+            <a class="help-link" href="#donate">See transfer details →</a>
+          </div>
+        </div>
+
+        <div class="help-grid-item">
+          <div class="help-grid-num">3/</div>
+          <h4>Submit your idea</h4>
+          <p>Have a connection, a legal angle, or an idea we haven't thought of? Both Anatoli and Afusa will receive your message directly.</p>
+          <div class="help-grid-links">
+            <a class="help-link" href="mailto:tolimd@milafamilyhealth.com,AFUSA_EMAIL?subject=Idea%20for%20Afusa&body=Hi%2C%20I%20have%20an%20idea%20or%20connection%20that%20might%20help%20Afusa%3A%0A%0A">Submit your idea →</a>
+          </div>
+        </div>
+
       </div>
     </div>
 
