@@ -946,19 +946,25 @@
           <div class="step-body">
             <strong>Enter Afusa's details</strong>
             <div style="display:flex;flex-direction:column;gap:8px;margin-top:10px;">
-              <div class="phone-block" style="margin:0;">
-                <div class="phone-block-left">
-                  <span class="phone-label">Full Name</span>
-                  <span class="bank-field-value plain">Afusa Nakanwagi</span>
+              <div class="phone-block" style="margin:0;flex-direction:column;align-items:flex-start;gap:6px;">
+                <div style="display:flex;align-items:center;justify-content:space-between;width:100%;">
+                  <div class="phone-block-left">
+                    <span class="phone-label">Full Name</span>
+                    <span class="bank-field-value plain">Afusa Nakanwagi</span>
+                  </div>
+                  <button class="copy-field-btn" onclick="copyField('Afusa Nakanwagi', this)">Copy</button>
                 </div>
-                <button class="copy-field-btn" onclick="copyField('Afusa Nakanwagi', this)">Copy</button>
+                <span style="font-family:sans-serif;font-size:12px;color:var(--muted);">copy and paste exactly as shown</span>
               </div>
-              <div class="phone-block" style="margin:0;">
-                <div class="phone-block-left">
-                  <span class="phone-label">Mobile Money Number (Airtel)</span>
-                  <span class="phone-number">+256 701 157670</span>
+              <div class="phone-block" style="margin:0;flex-direction:column;align-items:flex-start;gap:6px;">
+                <div style="display:flex;align-items:center;justify-content:space-between;width:100%;">
+                  <div class="phone-block-left">
+                    <span class="phone-label">Mobile Money Number (Airtel)</span>
+                    <span class="bank-field-value" style="font-size:20px;"><span style="color:var(--muted);font-weight:400;">+256</span> 701 157670</span>
+                  </div>
+                  <button class="copy-field-btn" onclick="copyField('701157670', this)">Copy</button>
                 </div>
-                <button class="copy-field-btn" onclick="copyField('701157670', this)">Copy</button>
+                <span style="font-family:sans-serif;font-size:12px;color:var(--muted);">copies without +256 — Remitly adds it automatically when you select Uganda</span>
               </div>
             </div>
           </div>
@@ -1126,12 +1132,26 @@
       }
     });
 
+    function fallbackCopy(value, done, fail) {
+      const ta = document.createElement('textarea');
+      ta.value = value;
+      ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0;';
+      document.body.appendChild(ta);
+      ta.focus();
+      ta.select();
+      try { document.execCommand('copy') ? done() : fail(); }
+      catch(e) { fail(); }
+      document.body.removeChild(ta);
+    }
     function copyField(value, btn) {
-      navigator.clipboard.writeText(value).then(() => {
-        const original = btn.textContent;
-        btn.textContent = 'Copied!';
-        setTimeout(() => { btn.textContent = original; }, 2000);
-      });
+      const original = btn.textContent;
+      const done = () => { btn.textContent = 'Copied!'; setTimeout(() => { btn.textContent = original; }, 2000); };
+      const fail = () => { btn.textContent = 'Failed'; setTimeout(() => { btn.textContent = original; }, 2000); };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(value).then(done).catch(() => fallbackCopy(value, done, fail));
+      } else {
+        fallbackCopy(value, done, fail);
+      }
     }
   </script>
 
